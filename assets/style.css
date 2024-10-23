@@ -269,6 +269,11 @@ input[type="submit"] {
 		flex-direction: column;
 
 	}
+
+	.w-100 {
+		max-width: 1000px;
+	}
+
 	.picture {
 		width: 50%;
 	}
@@ -324,10 +329,24 @@ input[type="submit"] {
 }
 
 @media all and (max-width: 650px) {
+
+	header {
+		padding-inline: 50px;
+	}
+
+	nav li {
+		font-size: 13px;
+	}
+
 	.top-header {
 		flex-direction: column;
 		padding-inline: 0;
 	}
+
+	.w-100 {
+		max-width: 650px;
+	}
+
 	.top-header .nav, .top-header .nav ul {
 		width: 100%;
 		padding: 0 0 0 0;
@@ -355,6 +374,20 @@ input[type="submit"] {
 	}
 	.picture {
 		width: 80%;
+	}
+}
+
+@media all and (max-width: 511px) {
+	header {
+		padding-inline: 15px;
+	}
+
+	header h1 {
+		font-size: 21px;
+	}
+
+	.w-100 {
+		max-width: 511px;
 	}
 }
 
