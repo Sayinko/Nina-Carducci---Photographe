@@ -311,7 +311,7 @@ input[type="submit"] {
 
 	}
 
-	.w-100 {
+	.containerImg img {
 		max-width: 1000px;
 	}
 
@@ -384,7 +384,7 @@ input[type="submit"] {
 		padding-inline: 0;
 	}
 
-	.w-100 {
+	.containerImg img {
 		max-width: 650px;
 	}
 
@@ -427,7 +427,7 @@ input[type="submit"] {
 		font-size: 21px;
 	}
 
-	.w-100 {
+	.containerImg img {
 		max-width: 511px;
 	}
 }
