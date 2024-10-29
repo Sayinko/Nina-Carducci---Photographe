@@ -19,6 +19,8 @@ header {
 	align-items: center;
 }
 
+
+
 header h1 {
 	font-size: 26px;
 }
@@ -42,6 +44,10 @@ nav a {
 
 .social-link img {
 	width: 20px;
+	height: auto;
+}
+
+.w-100 {
 	height: auto;
 }
 
