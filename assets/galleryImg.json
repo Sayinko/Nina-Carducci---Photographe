@@ -1,12 +1,12 @@
 [
     {
-        "image": "./assets/images/gallery/concerts/aaron-paul.jpg",
+        "image": "./assets/images/gallery/concerts/aaron-paul.webp",
         "alt": "Concert de Aaron Paul",
         "tag": "1"
     },
 
     {
-        "image": "./assets/images/gallery/concerts/austin-neill.jpg",
+        "image": "./assets/images/gallery/concerts/austin-neill.webp",
         "alt":"Concert de Austin Neill",
         "tag": "1"
     },
@@ -27,12 +27,12 @@
         "tag": "2"
     },
     {
-        "image": "./assets/images/gallery/mariage/hannah-busing.jpg",
+        "image": "./assets/images/gallery/mariage/hannah-busing.webp",
         "alt":"Des mains qui s'apprêtent à se joindre",
         "tag": "3"
     },
     {
-        "image": "./assets/images/gallery/mariage/jakob-owens.jpg",
+        "image": "./assets/images/gallery/mariage/jakob-owens.webp",
         "alt":"Un couple de jeune mariés prenant la pose devant un palmier",
         "tag": "3"
     },
