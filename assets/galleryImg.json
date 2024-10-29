@@ -1,49 +1,49 @@
 [
     {
-        "image": "./assets/images/gallery/concerts/aaron-paul.webp",
+        "image": "./assets/images/gallery/concerts/aaron-paul.jpg",
         "alt": "Concert de Aaron Paul",
         "tag": "1"
     },
 
     {
-        "image": "./assets/images/gallery/concerts/austin-neill.webp",
+        "image": "./assets/images/gallery/concerts/austin-neill.jpg",
         "alt":"Concert de Austin Neill",
         "tag": "1"
     },
 
     {
-        "image": "./assets/images/gallery/entreprise/ali-morshedlou.webp",
+        "image": "./assets/images/gallery/entreprise/ali-morshedlou.jpg",
         "alt":"Un homme debout sur son lieu de travail joignant les bras",
         "tag": "2"
     },
     {
-        "image": "./assets/images/gallery/entreprise/jason-goodman.webp",
+        "image": "./assets/images/gallery/entreprise/jason-goodman.jpg",
         "alt":"Une femme assise souriant à son bureau",
         "tag": "2"
     },
     {
-        "image": "./assets/images/gallery/entreprise/mateus-campos-felipe.webp",
+        "image": "./assets/images/gallery/entreprise/mateus-campos-felipe.jpg",
         "alt":"Une femme riant devant son ordinateur",
         "tag": "2"
     },
     {
-        "image": "./assets/images/gallery/mariage/hannah-busing.webp",
+        "image": "./assets/images/gallery/mariage/hannah-busing.jpg",
         "alt":"Des mains qui s'apprêtent à se joindre",
         "tag": "3"
     },
     {
-        "image": "./assets/images/gallery/mariage/jakob-owens.webp",
+        "image": "./assets/images/gallery/mariage/jakob-owens.jpg",
         "alt":"Un couple de jeune mariés prenant la pose devant un palmier",
         "tag": "3"
     },
 
     {
-        "image": "./assets/images/gallery/portraits/ade-tunji.webp",
+        "image": "./assets/images/gallery/portraits/ade-tunji.jpg",
         "alt":"Le portrait d'un homme fermant les yeux",
         "tag": "4"
     },
     {
-        "image": "./assets/images/gallery/portraits/nino-van-prattenburg.webp",
+        "image": "./assets/images/gallery/portraits/nino-van-prattenburg.jpg",
         "alt":"Le portrait d'une femme devant un grillage",
         "tag": "4"
     }
