@@ -1,0 +1,26 @@
+[
+    {
+        "category": "Tous",
+        "categoryId": "0"
+    },
+
+    {
+        "category": "Concert",
+        "categoryId": "1"
+    },
+
+    {
+        "category": "Entreprise",
+        "categoryId": "2"
+    },
+
+    {
+        "category": "Mariages",
+        "categoryId": "3"
+    },
+
+    {
+        "category": "Portrait",
+        "categoryId": "4"
+    }
+]

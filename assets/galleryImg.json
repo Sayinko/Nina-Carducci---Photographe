@@ -1,0 +1,50 @@
+[
+    {
+        "image": "./assets/images/gallery/concerts/aaron-paul.webp",
+        "alt": "Concert de Aaron Paul",
+        "tag": "1"
+    },
+
+    {
+        "image": "./assets/images/gallery/concerts/austin-neill.webp",
+        "alt":"Concert de Austin Neill",
+        "tag": "1"
+    },
+
+    {
+        "image": "./assets/images/gallery/entreprise/ali-morshedlou.webp",
+        "alt":"Un homme debout sur son lieu de travail joignant les bras",
+        "tag": "2"
+    },
+    {
+        "image": "./assets/images/gallery/entreprise/jason-goodman.webp",
+        "alt":"Une femme assise souriant à son bureau",
+        "tag": "2"
+    },
+    {
+        "image": "./assets/images/gallery/entreprise/mateus-campos-felipe.webp",
+        "alt":"Une femme riant devant son ordinateur",
+        "tag": "2"
+    },
+    {
+        "image": "./assets/images/gallery/mariage/hannah-busing.webp",
+        "alt":"Des mains qui s'apprêtent à se joindre",
+        "tag": "3"
+    },
+    {
+        "image": "./assets/images/gallery/mariage/jakob-owens.webp",
+        "alt":"Un couple de jeune mariés prenant la pose devant un palmier",
+        "tag": "3"
+    },
+
+    {
+        "image": "./assets/images/gallery/portraits/ade-tunji.webp",
+        "alt":"Le portrait d'un homme fermant les yeux",
+        "tag": "4"
+    },
+    {
+        "image": "./assets/images/gallery/portraits/nino-van-prattenburg.webp",
+        "alt":"Le portrait d'une femme devant un grillage",
+        "tag": "4"
+    }
+]

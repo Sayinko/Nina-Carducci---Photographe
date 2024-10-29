@@ -122,13 +122,48 @@ nav a {
 	padding-bottom: 100%;
 
 }
-.gallery-item {
-	position: absolute;
+
+/*NOUVEAU STYLE*/ 
+
+.py-3 {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.container-button {
+	display: flex;
+    align-self: center;
+    gap: 20px;
+}
+
+.container-button button {
+	background: white;
+    border: none;
+	font-size: 20px;
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+	margin: 40px 0;
+}
+
+.containerImg {
+	width: 100%;
+    height: 439px;
+}
+
+.containerImg img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	padding: .5em;
 }
+
+
+
+
+
 .mg-prev, .mg-next {
 	width: 30px;
 	height: 30px;
