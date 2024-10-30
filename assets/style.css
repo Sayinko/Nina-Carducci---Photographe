@@ -46,11 +46,12 @@ nav a {
 
 .social-link img {
 	width: 20px;
-	height: auto;
+	height: 20px;
 }
 
 .w-100 {
-	height: auto;
+	height: 712px;
+	width: 100%;
 }
 
 #about {
@@ -313,7 +314,7 @@ input[type="submit"] {
 
 	}
 
-	.containerImg img {
+	.w-100 {
 		max-width: 1000px;
 	}
 
@@ -386,7 +387,7 @@ input[type="submit"] {
 		padding-inline: 0;
 	}
 
-	.containerImg img {
+	.w-100 {
 		max-width: 650px;
 	}
 
@@ -429,7 +430,7 @@ input[type="submit"] {
 		font-size: 21px;
 	}
 
-	.containerImg img {
+	.w-100 {
 		max-width: 511px;
 	}
 }
