@@ -3,29 +3,30 @@ let category = [];
 
 const galleryImg = async () => {
   const response = await fetch("./assets/galleryImg.json");
-
   return await response.json();
 };
 
 const categoryImg = async () => {
   const response = await fetch("./assets/tagsImg.json");
-
   return await response.json();
 };
 
-const buttonFilters = (category) => {
+const buttonFilters = (categories) => {
   const containerGallery = document.querySelector(".py-3");
   const containerDiv = document.createElement("div");
 
   containerDiv.classList.add("container-button");
 
-  for (element of category) {
+  // Créer les boutons de filtre
+  for (const element of categories) {
     const button = document.createElement("button");
     button.innerText = element.category;
     button.dataset.id = element.categoryId;
     button.classList.add("button-filters");
 
     containerDiv.appendChild(button);
+
+    // Appliquer les listeners de filtres
     buttonListeners(button);
   }
 
@@ -35,22 +36,26 @@ const buttonFilters = (category) => {
 const buttonListeners = (button) => {
   button.addEventListener("click", (event) => {
     const id = event.target.dataset.id;
-    const filterButton = gallery.filter(
-      (element) => element.dataset.tag === id
-    );
-    const containerGallery = document.querySelector(".py-3");
 
-    containerGallery.innerHTML = "";
-    filterButton.forEach((element) => {
-      containerGallery.appendChild(element);
-    });
+    // Filtrer la galerie en fonction de l'ID du bouton
+    const filteredGallery =
+      id === "0"
+        ? gallery // Si ID = 0, afficher toutes les images
+        : gallery.filter((element) => element.tag === id);
+
+    // Mettre à jour la galerie affichée
+    updateGallery(filteredGallery);
   });
 };
 
-const createGallery = (gallery) => {
+const createGallery = (galleryItems) => {
   const galleryContainer = document.querySelector(".gallery");
 
-  for (const element of gallery) {
+  // Vider la galerie existante
+  galleryContainer.innerHTML = "";
+
+  // Ajouter les images de la galerie
+  for (const element of galleryItems) {
     const images = document.createElement("img");
     const article = document.createElement("article");
 
@@ -65,12 +70,33 @@ const createGallery = (gallery) => {
   }
 };
 
+// Mettre à jour la galerie avec les éléments filtrés
+const updateGallery = (filteredGallery) => {
+  const galleryContainer = document.querySelector(".gallery");
+  galleryContainer.innerHTML = ""; // Vider l'ancienne galerie
+
+  filteredGallery.forEach((element) => {
+    const images = document.createElement("img");
+    const article = document.createElement("article");
+
+    article.classList.add("containerImg");
+
+    images.src = element.image;
+    images.alt = element.alt;
+    images.dataset.tag = element.tag;
+
+    galleryContainer.appendChild(article);
+    article.appendChild(images);
+  });
+};
+
 const app = async () => {
   gallery = await galleryImg();
   category = await categoryImg();
+
   if (gallery && category) {
-    createGallery(gallery);
-    buttonFilters(category);
+    createGallery(gallery); // Crée la galerie initiale avec toutes les images
+    buttonFilters(category); // Crée les boutons de filtre
   }
 };
 
