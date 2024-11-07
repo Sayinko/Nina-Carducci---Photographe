@@ -1,5 +1,6 @@
 let gallery = [];
 let category = [];
+let currentIndex = 0;
 
 const galleryImg = async () => {
   const response = await fetch("./assets/galleryImg.json");
@@ -17,7 +18,6 @@ const buttonFilters = (categories) => {
 
   containerDiv.classList.add("container-button");
 
-  // Créer les boutons de filtre
   for (const element of categories) {
     const button = document.createElement("button");
     button.innerText = element.category;
@@ -26,7 +26,6 @@ const buttonFilters = (categories) => {
 
     containerDiv.appendChild(button);
 
-    // Appliquer les listeners de filtres
     buttonListeners(button);
   }
 
@@ -41,30 +40,21 @@ const buttonListeners = (button) => {
       button.classList.remove("button-filters-active");
     });
     button.classList.add("button-filters-active");
-    // Filtrer la galerie en fonction de l'ID du bouton
-    const filteredGallery =
-      id === "0"
-        ? gallery // Si ID = 0, afficher toutes les images
-        : gallery.filter((element) => element.tag === id);
 
-    // Mettre à jour la galerie affichée
+    const filteredGallery = id === "0" ? gallery : gallery.filter((element) => element.tag === id);
     updateGallery(filteredGallery);
   });
 };
 
 const createGallery = (galleryItems) => {
   const galleryContainer = document.querySelector(".gallery");
-
-  // Vider la galerie existante
   galleryContainer.innerHTML = "";
 
-  // Ajouter les images de la galerie
-  for (const element of galleryItems) {
+  galleryItems.forEach((element, index) => {
     const images = document.createElement("img");
     const article = document.createElement("article");
 
     article.classList.add("containerImg");
-
     images.src = element.image;
     images.alt = element.alt;
     images.dataset.tag = element.tag;
@@ -72,99 +62,104 @@ const createGallery = (galleryItems) => {
     galleryContainer.appendChild(article);
     article.appendChild(images);
 
-    article.addEventListener("click", () => { createModale(gallery, element.image, element.alt) });
-  }
+    article.addEventListener("click", () => {
+      currentIndex = index;
+      createModale(galleryItems, element.image, element.alt);
+    });
+  });
 };
 
-// Mettre à jour la galerie avec les éléments filtrés
 const updateGallery = (filteredGallery) => {
   const galleryContainer = document.querySelector(".gallery");
-
-  // Masquer la galerie en appliquant `.gallery-hidden`
   galleryContainer.classList.add("gallery-hidden");
   galleryContainer.classList.remove("gallery-transition");
 
-  // Vider le contenu de la galerie et ajouter les nouvelles images
   setTimeout(() => {
     galleryContainer.innerHTML = "";
 
-    filteredGallery.forEach((element) => {
+    filteredGallery.forEach((element, index) => {
       const images = document.createElement("img");
       const article = document.createElement("article");
 
       article.classList.add("containerImg");
-
       images.src = element.image;
       images.alt = element.alt;
       images.dataset.tag = element.tag;
 
       galleryContainer.appendChild(article);
       article.appendChild(images);
+
+      article.addEventListener("click", () => {
+        currentIndex = index;
+        createModale(filteredGallery, element.image, element.alt);
+      });
     });
 
-    // Forcer le navigateur à appliquer le changement de style immédiatement
     requestAnimationFrame(() => {
-      // Appliquer `.gallery-transition` pour faire réapparaître la galerie
       galleryContainer.classList.remove("gallery-hidden");
       galleryContainer.classList.add("gallery-transition");
     });
-  }, 10); // Délai minimal pour permettre le rendu
+  }, 10);
 };
 
-const createModale = (filteredGallery, imgSrc, imgAlt) => {
- const modale = document.querySelector(".modale");
- modale.innerHTML = "";
- const contentModale = `
- <div class="background-modale">
+const createModale = (galleryItems, imgSrc, imgAlt) => {
+  const modale = document.querySelector(".modale");
+  modale.innerHTML = "";
+  const contentModale = `
+    <div class="background-modale"></div>
     <div class="box-modale">
       <div class="container-arrow">
         <div class="arrow-left"><</div>
         <div class="arrow-right">></div>
-          <div class="container-img">
-              <img class="img-modale" src="${imgSrc}" alt="${imgAlt}">
-          </div>
+        <div class="container-img">
+          <img class="img-modale" src="${imgSrc}" alt="${imgAlt}">
+        </div>
       </div>
-    </div>
- </div>`
+    </div>`;
 
- modale.insertAdjacentHTML("afterbegin", contentModale);
+  modale.insertAdjacentHTML("afterbegin", contentModale);
+  modale.style.overflow = "visible";
+  modale.style.display = "flex";
 
- modale.style.overflow = "visible";
- modale.style.display = "flex";
-
- const backgroundModale = document.querySelector(".background-modale");
- backgroundModale.addEventListener("click", (e) => {
-    e.preventDefault();
+  const backgroundModale = document.querySelector(".background-modale");
+  backgroundModale.addEventListener("click", () => {
     modale.style.display = "none";
- });
+  });
 
-  arrowLeftListener(filteredGallery)
-}
+  arrowLeftListener(galleryItems);
+  arrowRightListener(galleryItems);
+};
 
-const arrowLeftListener = (filteredGallery) => {
- const arrowLeft = document.querySelector(".arrow-left");
- arrowLeft.addEventListener("click", (e) => {
-    e.preventDefault();
-    for (const element of filteredGallery) {
-      console.log("ca marche")
- }})
-}
+const arrowLeftListener = (galleryItems) => {
+  const arrowLeft = document.querySelector(".arrow-left");
+  arrowLeft.addEventListener("click", () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : galleryItems.length - 1;
+    updateModaleImg(galleryItems[currentIndex]);
+  });
+};
+
+const arrowRightListener = (galleryItems) => {
+  const arrowRight = document.querySelector(".arrow-right");
+  arrowRight.addEventListener("click", () => {
+    currentIndex = (currentIndex < galleryItems.length - 1) ? currentIndex + 1 : 0;
+    updateModaleImg(galleryItems[currentIndex]);
+  });
+};
+
+const updateModaleImg = (element) => {
+  const modaleImg = document.querySelector(".img-modale");
+  modaleImg.src = element.image;
+  modaleImg.alt = element.alt;
+};
 
 const app = async () => {
   gallery = await galleryImg();
   category = await categoryImg();
 
   if (gallery && category) {
-    createGallery(gallery); // Crée la galerie initiale avec toutes les images
-    buttonFilters(category); // Crée les boutons de filtre
+    createGallery(gallery);
+    buttonFilters(category);
   }
 };
 
 app();
-
-
-// Lors du clique sur un des éléments de la galerie (containerImg) > afficher une lightbox
-// Ajout d'un listener sur les images de la galerie
-// Ouverture de la lightbox (balise dialog, ou conception complete de lighbox avec div..)
-// Navigation dans la lightbox (boutons précédent/suivant)
-// Fermeture de la lightbox (croix)
