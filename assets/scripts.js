@@ -118,7 +118,6 @@ const createModale = (galleryItems, imgSrc, imgAlt) => {
     </div>`;
 
   modale.insertAdjacentHTML("afterbegin", contentModale);
-  modale.style.overflow = "visible";
   modale.style.display = "flex";
 
   const backgroundModale = document.querySelector(".background-modale");
